@@ -1,35 +1,33 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Main {
-    @SuppressWarnings("null")
     public static void main(String[] args) {
-        // Création de la boîte
-       
-        Box boxOuverte = new Box(true); // true signifie que la boîte est ouverte
+        Box box = new Box(true); // true signifie que la boîte est ouverte
 
-        // Créer une boîte fermée
-        Box boxFermee = new Box(false); // false signifie que la boîte est fermée
-
-        // Afficher l'état des boîtes
-        System.out.println("La boîte ouverte est-elle ouverte ? " + boxOuverte.ouvert());
-        System.out.println("La boîte fermée est-elle ouverte ? " + boxFermee.ouvert());
-
-        // Ouvrir la boîte fermée
-        boxFermee.ouvrir();
-        System.out.println("La boîte fermée est-elle ouverte après avoir été ouverte ? " + boxFermee.ouvert());
-
-
-
-        
-        // Création des objets
+        // Création de quelques objets Things
         Things t1 = new Things("Épée", 100, 5);
         Things t2 = new Things("Bouclier", 150, 7);
         Things sword = new Things("Épée", 100, 5);
+
+        // Ajout des objets dans la boîte
+        box.add(t1);
+        box.add(t2);
+        box.add(sword);
+
+        // Vérification si la boîte contient certains objets
+        System.out.println("La boîte contient une épée ? " + box.contains(t1));
+        System.out.println("La boîte contient un arc ? " + box.contains(new Things("Arc", 80, 3)));
+        System.out.println("La boîte contient un bouclier ? " + box.contains(t2));
+        System.out.println("La boîte contient un objet null ? " + box.contains(null));
+        System.out.println("La boîte contient une épée ? " + box.contains(sword));
+        System.out.println("La boîte contient un objet identique à l'épée ? " + box.contains(new Things("Épée", 100, 5)));
+        
+        // Création des objets
         Things bow = new Things("Arc", 80, 3);
 
-        Box box = null;
+    
                 // Test d'ajout d'objets
-                box.add(t1);
+        box.add(t1);
         box.add(t2);
         box.add(sword);
         
